@@ -32,7 +32,7 @@ npm audit --omit=dev --audit-level=high
 
 **執行日期：** 2026-07-23
 
-**環境：** Node.js v22.22.2、npm 10.9.7、macOS case-insensitive filesystem；專案位於外接硬碟。
+**環境：** Node.js v22.22.2、npm 10.9.7、macOS case-insensitive filesystem。
 
 **狀態：** cloud-ready local design，未實際部署 AWS。
 
@@ -43,7 +43,7 @@ npm audit --omit=dev --audit-level=high
 | `node --test` | **14 tests、14 pass、0 fail、0 skipped** |
 | Coverage（該次 `npm run check`） | lines **97.92%**、branches **92.80%**、functions **96.97%** |
 | E2E generator | success/failure contract、repo 外 default invocation、single failure logging 全部通過 |
-| GitHub Actions | [run 29989198601](https://github.com/helloapple080/aws-static-site-checklist-generator/actions/runs/29989198601)；Node.js 22、24 matrix 均通過 |
+| GitHub Actions | [run 29989250938](https://github.com/helloapple080/aws-static-site-checklist-generator/actions/runs/29989250938)；Node.js 22、24 matrix 均通過 |
 | `npm audit --omit=dev --audit-level=high` | **0 vulnerabilities** |
 | Deterministic quality gate | `example-output.md` check 前後 SHA-256 都是 `90e9577200f582fa818a23a5bf01c3b1f9cff2ab6a1471804474f6f6d76dae7f` |
 | Official Git refs | checkout v4 → `34e114876b0b11c390a56381ad16ebd13914f8d5`；setup-node v4 → `49933ea5288caeca8642d1e84afbd3f7d6820020` |

@@ -49,7 +49,7 @@ flowchart LR
 - 不將 secrets 放入靜態網站的檢查項目。
 - Domain、environment、控制字元與 template placeholder 驗證。
 - Markdown／HTML contextual escaping。
-- Path traversal、symlink 與 case-insensitive alias 防護。
+- Path traversal、symlink 與 case-insensitive alias 防呆；適用於單一使用者、非對抗環境，不是 sandbox，也不抵禦並行檔案系統置換。
 - 1 MiB template 上限、同目錄 atomic write 與 `0600` output mode。
 - Structured log schema 由 logger 擁有，避免呼叫端偽造保留欄位。
 
@@ -90,7 +90,7 @@ found 0 vulnerabilities
 
 1. CLI 參數、domain、environment 與控制字元驗證。
 2. Markdown／HTML escaping 與 placeholder 完整性。
-3. Path traversal、symlink 與 case-insensitive alias 防護。
+3. 單一使用者、非對抗環境下的 path traversal、symlink 與 case-insensitive alias 防呆。
 4. Template 大小上限、atomic write 與 `0600` output mode。
 5. Structured log schema 與 single failure event。
 6. 真實檔案 I/O integration 與 child-process E2E。

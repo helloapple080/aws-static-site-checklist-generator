@@ -64,7 +64,7 @@ sequenceDiagram
 |---|---|---|
 | Invalid domain/environment/control character | Domain validation | non-zero exit + structured error event |
 | Markdown/HTML content injection | contextual escaping of inserted values | rendered as text |
-| Path traversal | lexical boundary + component symlink checks for custom paths | rejected before I/O |
+| Path traversal（單一使用者、無並行置換） | lexical boundary + component symlink checks for custom paths | 檢查當下拒絕；不構成 sandbox，TOCTOU 見 security.md |
 | Template/output alias | filesystem device/inode identity check | rejected |
 | Partial write | temp file + same-directory atomic rename | old file remains or complete new file |
 | Oversized/non-file template | stat + 1 MiB limit | rejected |
@@ -88,7 +88,7 @@ flowchart LR
 
 ## Quality attributes
 
-- **Security:** deny unexpected inputs, bounded file access, minimal data in logs.
+- **Security:** deny unexpected inputs and provide bounded-file-access guardrails for a trusted single-user runtime; not a sandbox.
 - **Reliability:** deterministic rendering and atomic output.
 - **Maintainability:** dependency direction and built-in-only runtime.
 - **Performance:** O(template size), bounded at 1 MiB；沒有證據前不做額外最佳化。

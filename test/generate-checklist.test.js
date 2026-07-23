@@ -6,14 +6,14 @@ test("parseArgs reads checklist generation options", () => {
   const args = parseArgs([
     "--project", "Client Landing Page",
     "--domain", "client.example.com",
-    "--owner", "阿豬",
+    "--owner", "Platform Team",
     "--environment", "staging",
     "--output", "examples/client.md",
   ]);
 
   assert.equal(args.project, "Client Landing Page");
   assert.equal(args.domain, "client.example.com");
-  assert.equal(args.owner, "阿豬");
+  assert.equal(args.owner, "Platform Team");
   assert.equal(args.environment, "staging");
   assert.equal(args.output, "examples/client.md");
 });

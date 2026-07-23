@@ -79,7 +79,7 @@ npm audit --audit-level=high
 
 ## 安全限制
 
-- 自訂 `--template` 與 `--output` 必須位於執行命令的目前目錄內；repo 內建的預設 template 是唯一受信任例外。
+- 自訂 `--template` 與 `--output` 必須位於執行命令的目前目錄內；repo 內建的預設 template 是唯一受信任例外。這些路徑與 symlink 檢查是單一使用者、非對抗環境的防呆措施，不是 sandbox，也不保證抵禦並行檔案系統置換攻擊。
 - 不接受換行等控制字元；插入值會轉義 Markdown 結構字元與 HTML angle brackets。
 - template 最大 1 MiB，且未支援 placeholder 會導致失敗。
 - 本工具不登入 AWS、不讀取 `.env`、不建立或修改雲端資源。

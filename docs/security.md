@@ -11,12 +11,14 @@
 
 CLI arguments、template 內容、目前工作目錄中的 symlink 都視為不可信。程式不讀 `.env`、不存取 AWS credentials，也不呼叫 AWS API。
 
-## Threats and controls
+## Threats and non-adversarial guardrails
 
-| Threat | Control | Verification |
+下列檔案路徑控制是針對單一使用者 CLI 的誤用防護，不構成 sandbox 或對抗同機並行攻擊者的安全邊界；TOCTOU 限制見 Residual risks。
+
+| Threat | Guardrail | Verification |
 |---|---|---|
 | Path traversal | custom output/template 必須 resolve 在 `cwd` 下；bundled template 是 module-owned trust exception | automated test |
-| Symlink overwrite | 拒絕既有 symlink 與路徑中的 symlink | automated test |
+| Symlink overwrite（無並行置換時） | 拒絕檢查當下已存在的 symlink 與路徑中的 symlink | automated test |
 | Markdown/HTML content injection | control-character rejection + contextual escaping of inserted values | automated test |
 | Malformed domain/environment | hostname regex + environment allowlist | automated test |
 | Partial/corrupt output | mode 0600 temp file + atomic rename + cleanup | integration test |
