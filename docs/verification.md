@@ -43,6 +43,7 @@ npm audit --omit=dev --audit-level=high
 | `node --test` | **14 tests、14 pass、0 fail、0 skipped** |
 | Coverage（該次 `npm run check`） | lines **97.92%**、branches **92.80%**、functions **96.97%** |
 | E2E generator | success/failure contract、repo 外 default invocation、single failure logging 全部通過 |
+| GitHub Actions | [run 29989198601](https://github.com/helloapple080/aws-static-site-checklist-generator/actions/runs/29989198601)；Node.js 22、24 matrix 均通過 |
 | `npm audit --omit=dev --audit-level=high` | **0 vulnerabilities** |
 | Deterministic quality gate | `example-output.md` check 前後 SHA-256 都是 `90e9577200f582fa818a23a5bf01c3b1f9cff2ab6a1471804474f6f6d76dae7f` |
 | Official Git refs | checkout v4 → `34e114876b0b11c390a56381ad16ebd13914f8d5`；setup-node v4 → `49933ea5288caeca8642d1e84afbd3f7d6820020` |
@@ -61,7 +62,7 @@ npm audit --omit=dev --audit-level=high
 
 ## Known limits
 
-- GitHub Actions workflow 已建立，採 Node.js 22、24 matrix；遠端 CI run 以 GitHub Actions 頁面為準，不能用本機結果代替。
+- 遠端 CI 已在 GitHub-hosted Ubuntu runner 驗證 Node.js 22、24；後續狀態仍以最新 GitHub Actions run 為準。
 - Node.js 的 `--experimental-test-coverage` 會合併 child-process E2E coverage；重複執行時分支／行數可能因 subprocess 覆蓋收集時序小幅變動，因此表格記錄指定 `npm run check` 的實際輸出，不宣稱固定門檻。
 - 未執行真實 AWS deployment、IAM policy simulation、CloudFront/S3 integration 或負載測試。
 - POSIX file mode (`0600`) 在 Windows/non-POSIX filesystem 的語義可能不同。
