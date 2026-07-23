@@ -1,0 +1,21 @@
+{
+  "name": "aws-static-site-checklist-generator",
+  "version": "1.0.0",
+  "description": "Generate security- and operations-focused readiness checklists for AWS S3 and CloudFront static sites.",
+  "type": "module",
+  "main": "src/generate-checklist.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test",
+    "coverage": "node --test --experimental-test-coverage",
+    "lint": "node --check src/generate-checklist.js && node --check src/domain/checklist.js && node --check src/application/generate-checklist.js && node --check src/infrastructure/filesystem.js && node --check src/observability/logger.js",
+    "generate": "node src/generate-checklist.js --project \"Client Landing Page\" --domain \"client.example.com\" --output examples/example-output.md",
+    "check": "npm run lint && npm test && npm run coverage",
+    "audit": "npm audit --audit-level=high"
+  },
+  "keywords": ["aws", "s3", "cloudfront", "checklist", "security", "operations", "cloud-ready"],
+  "license": "MIT",
+  "private": true
+}
