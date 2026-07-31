@@ -8,6 +8,16 @@
 
 這個 CLI 是我用來把上線前容易被遺漏的事攤開：DNS、TLS、IAM、logging、rollback、監控、災難復原，以及「這次誰負責確認」。它不會替你部署 AWS；它產生一份能被人審閱、修改與簽核的 checklist。
 
+## 適合誰、用在哪裡
+
+| 適合的人 | 他會用它做什麼 | 可用環境 |
+|---|---|---|
+| 前端工程師、Cloud／DevOps 工程師 | 在 S3 + CloudFront 上線前產生可審閱 checklist | 本機 terminal、CI job、release repository |
+| 小型團隊的 Tech Lead／PM | 讓 DNS、TLS、rollback、監控與 owner 不再散在不同訊息裡 | release review、handoff、客戶交付前確認 |
+| 顧問或 agency | 為每個靜態網站專案建立可修改、可簽核的上線基線 | 客戶專案 workspace、內部交付流程 |
+
+它可以在任何有 Node.js 22+ 的 macOS、Linux 或 Windows 開發／CI 環境執行；不需要 AWS credentials，因為它不會連 AWS 或部署資源。
+
 ## 直接產生一份 checklist
 
 需要 Node.js 22+ 與 npm 10+。
